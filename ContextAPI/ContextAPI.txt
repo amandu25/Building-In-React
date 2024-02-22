@@ -1,0 +1,42 @@
+
+- Context API is a feature in React that allows you to share data between components without passing props manually at every level.
+- It provides a way to pass data through the component tree without having to pass props down manually at every level.
+- Context consists of two main components: Provider and Consumer.
+- The Provider component is used to wrap the components that need access to the shared data.
+- The Consumer component is used to access the shared data within the wrapped components.
+- The shared data is stored in a context object, which can be created using the createContext() function.
+- The context object is passed as a prop to the Provider component, which makes the shared data available to all the components wrapped inside it.
+- The Consumer component can access the shared data by using the useContext() hook or by wrapping the component with the Consumer component and using a render prop.
+- Changes to the shared data can be made by updating the value of the context object in the Provider component, which will trigger a re-render of all the components that consume the shared data.
+
+Step 1-: Make a 'context' folder. 
+Step 2-: Make a UserContext.js file for 'Users' functionality.
+Step 3-:
+Write this code: 
+import React from "react";
+
+const UserContext = React.createContext(); //To make context, here createContext is a function. Now UserCOntext is a global variable which can be accessed from anywhere
+
+export default UserContext;
+
+Step 4-: Make another file in 'context' folder of name UserContextProvider.jsx which is a provider, now write this code in it.
+
+import React, { useState } from "react";
+import UserContext from "./UserContext";
+
+const UserContextProvider = (children) => { //children is a prop to which the variables are to passed on 
+  const [user, setUser] = useState(null);
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}> //Value is prop(property) which is object of all those thing which are going to be passed on to the 'children'
+      {children} //All those components which need that prop
+    </UserContext.Provider>
+  );
+};
+
+export default UserContextProvider;
+
+Step 5-: Now to give access of this, you can either give it in main.jsx or in App.jsx. In our case we are giving it to app.jsx.
+
+
+
