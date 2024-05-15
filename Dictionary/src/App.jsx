@@ -1,15 +1,10 @@
-import { useState } from 'react'
-import HomePage from './HomePage'
-import './App.css'
+import { Footer } from "./components/Footer";
+import HomePage from "./components/HomePage";
+import Meaning from "./components/Meaning";
+import { Navbar } from "./components/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <HomePage />
-    </>
-  )
+  return <></>;
 }
 
-export default App
+export default App;
